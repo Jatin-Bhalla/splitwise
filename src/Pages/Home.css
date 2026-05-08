@@ -1,0 +1,78 @@
+/* HOME CONTAINER */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  width: 350px;
+  margin: 50px auto;
+}
+
+
+/* CARD STYLE */
+.home-container .card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  background: transparent;
+  border: none;
+
+  padding: 12px 5px;
+
+  border-bottom: 2px solid #6d28d9;
+
+  color: #f3e8ff;
+}
+
+
+/* INPUT STYLE */
+.home-container .card input {
+  flex: 1;
+
+  background: transparent;
+  border: none;
+  outline: none;
+
+  color: white;
+  font-size: 16px;
+
+  padding: 8px;
+}
+
+
+/* Placeholder color */
+.home-container .card input::placeholder {
+  color: #c4b5fd;
+}
+
+
+/* ICONS */
+.card-icon {
+  font-size: 22px;
+  margin-right: 8px;
+}
+
+
+/* Expense icon */
+.expense-icon::before {
+  content: "💸";
+}
+
+
+/* Rupee icon */
+.rupee-icon::before {
+  content: "₹";
+  color: #a85537;
+  font-weight: bold;
+}
+
+
+/* ROWS */
+.row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  color: #e9d5ff;
+}

@@ -1,0 +1,1 @@
+fix the icons in the home css from the card imported in home.jsx

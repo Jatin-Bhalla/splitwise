@@ -1,0 +1,40 @@
+/* Root theme variables */
+:root {
+  --bg-main: #140028;
+  --bg-card: #1a0033;
+  --bg-light: #2a0050;
+
+  --text-primary: #f3e6ff;
+  --text-secondary: #cc99ff;
+
+  --border: #330066;
+  --accent: #b366ff;
+}
+
+/* Reset */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  font-family: Arial, sans-serif;
+}
+/* Layout container */
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* important */
+}
+
+/* This pushes footer down */
+.page-content {
+  flex: 1;
+  padding: 20px;
+}
+#spacer {
+  height: 88px;
+  border-top: 1px solid var(--border);
+  @media (max-width: 1024px) {
+    height: 48px;
+  }
+}

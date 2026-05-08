@@ -1,0 +1,46 @@
+/* Header container */
+.header {
+  background-color: #1a0033; /* same as footer */
+  padding: 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-bottom: 1px solid #330066;
+}
+
+/* Logo wrapper */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* S circle */
+.logo-circle {
+  width: 42px;
+  height: 42px;
+
+  background-color: #2a0050; /* slightly lighter purple */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 50%;
+
+  color: #e6ccff; /* light purple text */
+  font-weight: 800;
+  font-size: 20px;
+
+  border: 2px solid #6600cc;
+}
+
+/* SPLITWISE text */
+.logo h1 {
+  color: #cc99ff; /* matches footer headings */
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}

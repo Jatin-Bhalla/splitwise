@@ -1,0 +1,48 @@
+/* Navbar container */
+nav {
+  background-color: #2b2b2b;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  border-radius: 12px;
+  margin: 20px;
+
+  border: 2px solid #a020f0;
+  box-shadow: 0 0 10px #a020f0, 0 0 20px #6a0dad;
+}
+
+/* 🔥 THIS IS THE MAIN FIX */
+nav ul {
+  display: flex;        /* makes items horizontal */
+  gap: 15px;
+  padding: 0;
+  margin: 0;
+}
+
+/* Remove bullet points */
+nav li {
+  list-style: none;
+}
+
+/* Link styling (box) */
+nav a {
+  display: block;       /* important */
+  padding: 10px 20px;
+  background-color: #3a3a3a;
+  color: white;
+  border-radius: 8px;
+  font-weight: 500;
+  text-decoration: none;
+
+  border: 2px solid #a020f0;
+  box-shadow: 0 0 5px #a020f0, 0 0 10px #a020f0;
+
+  transition: all 0.3s ease;
+}
+
+/* Hover effect */
+nav a:hover {
+  background-color: #4a4a4a;
+  box-shadow: 0 0 10px #d580ff, 0 0 20px #a020f0;
+  transform: scale(1.05);
+}

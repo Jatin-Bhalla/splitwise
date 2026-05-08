@@ -1,0 +1,62 @@
+.card {
+  background: rgba(54, 19, 97, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(204, 153, 255, 0.15);
+  border-radius: 12px;
+
+  padding: 20px;
+  color: #f0e6ff;
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* INPUT STYLE */
+.home-container .card input {
+  flex: 1;
+
+  background: transparent;
+  border: none;
+  outline: none;
+
+  color: white;
+  font-size: 16px;
+
+  padding: 8px;
+}
+
+
+/* Placeholder color */
+.home-container .card input::placeholder {
+  color: #c4b5fd;
+}
+
+
+/* ICONS */
+.card-icon {
+  font-size: 22px;
+  margin-right: 8px;
+}
+
+
+/* Expense icon */
+.expense-icon::before {
+  content: "💸";
+}
+
+
+/* Rupee icon */
+.rupee-icon::before {
+  content: "₹";
+  color: #a855f7;
+  font-weight: bold;
+}
+
+
+/* ROWS */
+.row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  color: #e9d5ff;
+}
