@@ -1,15 +1,12 @@
 import './Friends.css'
 import List from "../Components/List"
 
-function addFriend(){
-       alert("hello");
-}
 
-export default function Friends(){
+export default function Friends({events,setEvents}){
 return (
 <div className="conatiner">
   
-       <List/>
+       <List events={events} setEvents={{setEvents}}/>
   
  </div>
  )

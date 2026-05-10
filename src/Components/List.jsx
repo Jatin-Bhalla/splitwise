@@ -1,9 +1,9 @@
 import { useState } from "react";
 import "./List.css";
 
-export default function List() {
+export default function List( {events, setEvents}) {
     const [input, setInput] = useState("");
-    const [events, setEvents] = useState([]);
+    //const [events, setEvents] = useState([]);
 
     function addEvent() {
         if (input.trim() === "") return;
