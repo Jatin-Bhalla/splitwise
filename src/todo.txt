@@ -1,1 +1,4 @@
 fix the icons in the home css from the card imported in home.jsx
+
+Problem: Can't add icons to the interface like circles
+????

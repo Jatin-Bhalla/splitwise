@@ -30,11 +30,13 @@ export default function Home() {
 
       <div className="row">
         <p>Paid by</p>
+        
         <DropBox label="you" />
       </div>
 
       <div className="row">
         <p>and split</p>
+
         <DropBox label="equally" />
       </div>
 

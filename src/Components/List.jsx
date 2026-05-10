@@ -1,21 +1,48 @@
 import { useState } from "react";
+import "./List.css";
 
-export default function List(){
-    const [input, setInput] =useState("");
-    const [events, setEvents] =useState([]);
-    function addEvent(){
-        if (input.trim()==="")return;
+export default function List() {
+    const [input, setInput] = useState("");
+    const [events, setEvents] = useState([]);
 
-    setEvents([...events, input]);
+    function addEvent() {
+        if (input.trim() === "") return;
 
-    setInput("");
+        setEvents([...events, input]);
 
+        setInput("");
     }
 
-    return(
-        <div className="list-container">
-            <input type="text" value={input} onChange={(e)=>{setInput(e.target.value)}}/>
-        <button onClick={addEvent}></button>
+    return (
+        <div className="app-container">
+            <h1 className="title">Friend List</h1>
+
+            <div className="list-container">
+                <input
+                    className="friend-input"
+                    type="text"
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                    placeholder="Enter friend name"
+                />
+
+                <div id="button-container">
+                    <button onClick={addEvent}>
+                        <span>👥</span>
+                        ADD FRIEND
+                    </button>
+                </div>
+            </div>
+
+            {/* Display Friends */}
+            <ul className="friends-list">
+                {events.map((event, index) => (
+                    <li key={index} className="friend-item">
+                        <span className="icon">😊</span>
+                        <span>{event}</span>
+                    </li>
+                ))}
+            </ul>
         </div>
-    )
+    );
 }

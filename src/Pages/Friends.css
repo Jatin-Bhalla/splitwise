@@ -1,0 +1,158 @@
+.smile-icon {
+  width: 60px;
+  height: 60px;
+  border: 4px solid #000;
+  border-radius: 50%;
+  position: relative;
+  background: #fff;
+}
+
+/* Eyes */
+.smile-icon::before,
+.smile-icon::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: #000;
+  border-radius: 50%;
+  position: absolute;
+  top: 18px;
+}
+
+.smile-icon::before {
+  left: 16px;
+}
+
+.smile-icon::after {
+  right: 16px;
+}
+
+/* Smile */
+.smile-icon::after {
+  box-shadow: none;
+}
+
+.smile-icon::before,
+.smile-icon::after {
+  z-index: 2;
+}
+
+.smile-icon::after {
+  right: 16px;
+}
+
+.smile-icon::before {
+  left: 16px;
+}
+
+.smile-icon::after,
+.smile-icon::before {
+  content: "";
+}
+
+.smile-icon::after {
+  background: #000;
+}
+
+.smile-icon::before {
+  background: #000;
+}
+
+.smile-icon::after {
+  border-radius: 50%;
+}
+
+/* Mouth */
+.smile-icon span {
+  display: none;
+}
+
+.smile-icon::marker {
+  display: none;
+}
+
+.smile-icon::selection {
+  background: transparent;
+}
+
+.smile-icon::after {
+  top: 18px;
+}
+
+.smile-icon::before {
+  top: 18px;
+}
+
+.smile-icon::before,
+.smile-icon::after {
+  width: 8px;
+  height: 8px;
+}
+
+.smile-icon:after {
+  content: "";
+}
+
+.smile-icon:before {
+  content: "";
+}
+
+.smile-icon {
+  overflow: hidden;
+}
+
+.smile-icon::part(mouth) {
+  display: none;
+}
+
+.smile-icon .mouth {
+  position: absolute;
+  width: 30px;
+  height: 15px;
+  border: 4px solid #000;
+  border-top: none;
+  border-radius: 0 0 30px 30px;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#button-container button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  background: linear-gradient(135deg, #7b3fe4, #9b6bff);
+  color: #ffffff;
+
+  border: none;
+  padding: 12px 24px;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  border-radius: 12px;
+
+  cursor: pointer;
+
+  box-shadow: 0 4px 12px rgba(123, 63, 228, 0.4);
+
+  transition: all 0.3s ease;
+}
+
+#button-container button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(123, 63, 228, 0.5);
+
+  background: linear-gradient(135deg, #692fd1, #8d5cff);
+}
+
+#button-container button:active {
+  transform: scale(0.96);
+}

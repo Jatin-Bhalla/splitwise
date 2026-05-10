@@ -13,8 +13,7 @@ export default function DropBox({label}){
     return(
         <div>
             <button onClick={toggleDropdown}>{label}</button>
-            {isOpen && <List/>
-            }
+            {isOpen && <List/>}
 
         </div>
     )

@@ -63,7 +63,7 @@
 /* Rupee icon */
 .rupee-icon::before {
   content: "₹";
-  color: #a85537;
+  color: #a855f7;
   font-weight: bold;
 }
 
