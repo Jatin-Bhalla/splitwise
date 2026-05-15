@@ -1,4 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { useState } from "react";
 
 import Header from "./Components/Header";
 import Navbar from "./Components/Navbar";
@@ -11,69 +12,64 @@ import Activity from "./Pages/Activity";
 import Account from "./Pages/Account";
 
 function Page({ children }) {
+//router can't access this function
   return (
     <>
       <Header />
-      <div></div>
+      <section id="spacer"></section>
       <Navbar />
       {children}
-      <div></div>
+      <section id="spacer"></section>
       <Footer />
     </>
   );
 }
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: (
-      <Page>
-        <Home />
-      </Page>
-    )
-  },
-  {
-    path: "/groups",
-    element: (
-      <Page>
-        <Groups />
-      </Page>
-    )
-  },
-  {
-    path: "/friends",
-    element: (
-      <Page>
-        <Friends />
-      </Page>
-    )
-  },
-  {
-    path: "/activity",
-    element: (
-      <Page>
-        <Activity />
-      </Page>
-    )
-  },
-  {
-    path: "/account",
-    element: (
-      <Page>
-        <Account />
-      </Page>
-    )
-  },
-  {
-    path: "*",
-    element: (
-      <Page>
-        <h1>404 - Page Not Found</h1>
-      </Page>
-    )
-  }
-]);
-
 export default function App() {
+  const [events, setEvents] = useState([]);
+
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: (
+        <Page>
+          <Home  events={events} setEvents={setEvents} />
+        </Page>
+      )
+    },
+    {
+      path: "/groups",
+      element: (
+        <Page>
+          <Groups events={events} setEvents={setEvents} />
+        </Page>
+      )
+    },
+    {
+      path: "/friends",
+      element: (
+        <Page>
+          <Friends events={events} setEvents={setEvents} />
+        </Page>
+      )
+    },
+    {
+      path: "/activity",
+      element: (
+        <Page>
+          <Activity />
+        </Page>
+      )
+    },
+    {
+      path: "/account",
+      element: (
+        <Page>
+          <Account />
+        </Page>
+      )
+    }
+  ]);
+
   return <RouterProvider router={router} />;
 }

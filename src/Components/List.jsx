@@ -1,9 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./List.css";
 
 export default function List( {events, setEvents}) {
     const [input, setInput] = useState("");
     //const [events, setEvents] = useState([]);
+
+      // ADD useEffect HERE
+    useEffect(() => {
+        console.log("Updated Events Array:", events);
+    }, [events]);
+
 
     function addEvent() {
         if (input.trim() === "") return;
@@ -36,13 +42,13 @@ export default function List( {events, setEvents}) {
 
             {/* Display Friends */}
             <ul className="friends-list">
-                {events.map((event, index) => (
-                    <li key={index} className="friend-item">
-                        <span className="icon">😊</span>
-                        <span>{event}</span>
-                    </li>
-                ))}
-            </ul>
+    {events.map((event, index) => (
+        <li key={index} className="friend-item">
+            <span className="icon">😊</span>
+            <span>{event}</span>
+        </li>
+    ))}
+</ul>
         </div>
     );
 }
