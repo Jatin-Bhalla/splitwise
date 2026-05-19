@@ -1,4 +1,3 @@
-/* Root theme variables */
 :root {
   --bg-main: #140028;
   --bg-card: #1a0033;
@@ -11,30 +10,89 @@
   --accent: #b366ff;
 }
 
-/* Reset */
+/* RESET */
 html, body, #root {
   height: 100%;
   margin: 0;
+  padding: 0;
   background-color: var(--bg-main);
   color: var(--text-primary);
   font-family: Arial, sans-serif;
 }
-/* Layout container */
+
+/* MAIN LAYOUT WRAPPER (STICKY FOOTER SYSTEM) */
 .app-layout {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* important */
 }
 
-/* This pushes footer down */
+/* CONTENT AREA (this pushes footer to bottom) */
 .page-content {
   flex: 1;
   padding: 20px;
 }
-#spacer {
-  height: 88px;
-  border-top: 1px solid var(--border);
-  @media (max-width: 1024px) {
-    height: 48px;
-  }
+
+/* HOME CONTAINER */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 350px;
+  margin: 50px auto;
+}
+
+/* CARD STYLE */
+.home-container .card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  background: transparent;
+  border: none;
+  padding: 12px 5px;
+
+  border-bottom: 2px solid var(--accent);
+
+  color: var(--text-primary);
+}
+
+/* INPUT STYLE */
+.home-container .card input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 16px;
+  padding: 8px;
+}
+
+/* Placeholder */
+.home-container .card input::placeholder {
+  color: var(--text-secondary);
+}
+
+/* ICONS */
+.card-icon {
+  font-size: 22px;
+  margin-right: 8px;
+}
+
+.expense-icon::before {
+  content: "💸";
+}
+
+.rupee-icon::before {
+  content: "₹";
+  color: var(--accent);
+  font-weight: bold;
+}
+
+/* ROW */
+.row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-secondary);
 }

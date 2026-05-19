@@ -12,29 +12,35 @@ import Activity from "./Pages/Activity";
 import Account from "./Pages/Account";
 
 function Page({ children }) {
-//router can't access this function
   return (
-    <>
+    <div className="app-layout">
       <Header />
-      <section id="spacer"></section>
       <Navbar />
-      {children}
-      <section id="spacer"></section>
+
+      <main className="page-content">
+        {children}
+      </main>
+
       <Footer />
-    </>
+    </div>
   );
 }
 
 export default function App() {
   const [events, setEvents] = useState([]);
-  const [log ,setLog]= useState([]);
+  const [logs, setLogs] = useState([]);
 
   const router = createBrowserRouter([
     {
       path: "/",
       element: (
         <Page>
-          <Home  events={events} setEvents={setEvents} />
+          <Home
+            logs={logs}
+            setLogs={setLogs}
+            events={events}
+            setEvents={setEvents}
+          />
         </Page>
       )
     },
@@ -42,7 +48,7 @@ export default function App() {
       path: "/groups",
       element: (
         <Page>
-          <Groups events={events} setEvents={setEvents} />
+          <Groups logs={logs} setLogs={setLogs} events={events} setEvents={setEvents} />
         </Page>
       )
     },
@@ -58,7 +64,7 @@ export default function App() {
       path: "/activity",
       element: (
         <Page>
-          <Activity  logs ={log} setLog={setLog} />
+          <Activity logs={logs} setLogs={setLogs} />
         </Page>
       )
     },

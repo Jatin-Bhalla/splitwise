@@ -10,3 +10,7 @@ a alphanumeric value can be added to the   list but only a parameter of the user
 
 
 in HOME.jsx SHOULD I add  a better input html for the code that  I made for percentages
+
+
+Activity.jsx 
+Add a delete button in the  activity page to log the data

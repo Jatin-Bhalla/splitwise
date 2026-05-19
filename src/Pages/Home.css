@@ -75,4 +75,13 @@
   gap: 10px;
 
   color: #e9d5ff;
+}html, body {
+  height: 100%;
+  margin: 0;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }

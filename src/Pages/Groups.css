@@ -1,0 +1,48 @@
+.activity-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 420px;
+  margin: auto;
+}
+
+.activity-card {
+  background: #1a0033;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid #330066;
+}
+
+.activity-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* PEOPLE BOX */
+.people-row {
+  display: flex;
+  gap: 8px;
+}
+
+/* SMALL CIRCLES */
+.circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #b366ff;
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: bold;
+  font-size: 13px;
+}
+
+/* BODY */
+.activity-body {
+  margin-top: 10px;
+  color: #cc99ff;
+}

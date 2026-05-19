@@ -1,0 +1,78 @@
+/* MAIN CONTAINER */
+
+.activity-container {
+  width: 400px;
+  margin: 40px auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+
+/* CARD */
+
+.activity-card {
+  background: #1e1b2e;
+
+  border: 1px solid #6d28d9;
+
+  border-radius: 14px;
+
+  overflow: hidden;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+
+/* TOP BAR */
+
+.activity-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 16px;
+
+  cursor: pointer;
+
+  background: #2a243d;
+
+  color: #f3e8ff;
+
+  transition: 0.2s;
+}
+
+.activity-header:hover {
+  background: #352f4d;
+}
+
+
+/* EXPANDED BODY */
+
+.activity-body {
+  padding: 16px;
+
+  color: #ddd6fe;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+
+/* RESULT LINES */
+
+.activity-result {
+  margin-top: 10px;
+
+  padding: 12px;
+
+  background: #312e45;
+
+  border-radius: 10px;
+}
+
+.activity-result p {
+  margin: 6px 0;
+}
