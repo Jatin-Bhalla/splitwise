@@ -7,3 +7,6 @@ Problem: Can't add icons to the interface like circles
 FRIENDS.JSX
 add limitations to the list and make sure that  only names can be added to the list 
 a alphanumeric value can be added to the   list but only a parameter of the username can be addes to it
+
+
+in HOME.jsx SHOULD I add  a better input html for the code that  I made for percentages

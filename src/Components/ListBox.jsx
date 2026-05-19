@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState , useEffect} from "react";
+
 
 export default function ListBox({
   label,
@@ -8,18 +9,18 @@ export default function ListBox({
 }) {
   const [isOpen, setAsOpened] = useState(false);
 
-  function toggleDropdown() {
+  function togglelistBox() {
     setAsOpened(!isOpen);
   }
 
-  function handleSelect(item) {
+  function handleSelect(item) { 
     setSelected(item);
     setAsOpened(false);
   }
 
   return (
     <div
-      className="dropdown"
+      className="listBox"
       style={{
         position: "relative",
         display: "inline-block",
@@ -28,7 +29,7 @@ export default function ListBox({
       }}
     >
       <button
-        onClick={toggleDropdown}
+        onClick={togglelistBox}
         style={{
           padding: "12px 18px",
           borderRadius: "10px",
@@ -46,7 +47,7 @@ export default function ListBox({
 
       {isOpen && (
         <ul
-          className="dropdropdown"
+          className="droplistBox"
           style={{
             position: "absolute",
             top: "65px",

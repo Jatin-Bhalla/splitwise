@@ -1,0 +1,167 @@
+  console.log(description);
+    console.log(amount);
+
+  const total = Number(amount);
+
+
+  // Friends list
+  const people = [...events];
+
+  // Final result object
+  let result = [];
+
+  // =========================
+  // EQUALLY
+  // =========================
+  if (splitType === "Equally") {
+
+    const splitAmount = total / people.length;
+
+    result = people.map((person) => {
+
+      if (person === paidBy) {
+        return `${person} gets back ₹${(total - splitAmount).toFixed(2)}`;
+      }
+
+      return `${person} owes ₹${splitAmount.toFixed(2)} to ${paidBy}`;
+    });
+
+  }
+
+  // =========================
+  // BY PERCENTAGE
+  // =========================
+  else if (splitType === "By Percentage") {
+
+    /*
+      Example future structure:
+      percentages = {
+        Ali: 50,
+        John: 30,
+        Sam: 20
+      }
+    */
+
+    const percentages = {};
+
+    let totalPercent = 0;
+
+    people.forEach((person) => {
+
+      const percent = Number(
+        prompt(`Enter percentage for ${person}`)
+      );
+
+      percentages[person] = percent;
+
+      totalPercent += percent;
+    });
+
+    if (totalPercent !== 100) {
+      alert("Total percentage must equal 100%");
+      return;
+    }
+
+    result = people.map((person) => {
+
+      const share =
+        (total * percentages[person]) / 100;
+
+      if (person === paidBy) {
+        return `${person} paid ₹${total} and owes ₹${share.toFixed(2)}`;
+      }
+
+      return `${person} owes ₹${share.toFixed(2)} to ${paidBy}`;
+    });
+
+  }
+
+  // =========================
+  // BY SHARES
+  // =========================
+  else if (splitType === "By shares") {
+
+    /*
+      Example:
+      Ali = 2 shares
+      John = 1 share
+    */
+
+    const shares = {};
+
+    let totalShares = 0;
+
+    people.forEach((person) => {
+
+      const share = Number(
+        prompt(`Enter shares for ${person}`)
+      );
+
+      shares[person] = share;
+
+      totalShares += share;
+    });
+
+    const oneShareValue = total / totalShares;
+
+    result = people.map((person) => {
+
+      const personAmount =
+        shares[person] * oneShareValue;
+
+      if (person === paidBy) {
+        return `${person} paid ₹${total}`;
+      }
+
+      return `${person} owes ₹${personAmount.toFixed(2)} to ${paidBy}`;
+    });
+
+  }
+
+  // =========================
+  // EXACT AMOUNT
+  // =========================
+  else if (splitType === "Exact Amount") {
+
+    const exactAmounts = {};
+
+    let enteredTotal = 0;
+
+    people.forEach((person) => {
+
+      if (person === paidBy) return;
+
+      const personAmount = Number(
+        prompt(`Enter amount for ${person}`)
+      );
+
+      exactAmounts[person] = personAmount;
+
+      enteredTotal += personAmount;
+    });
+
+    if (enteredTotal > total) {
+      alert("Entered amount exceeds total");
+      return;
+    }
+
+    result = people.map((person) => {
+
+      if (person === paidBy) {
+
+        const remaining =
+          total - enteredTotal;
+
+        return `${person} gets back ₹${remaining.toFixed(2)}`;
+      }
+
+      return `${person} owes ₹${exactAmounts[person].toFixed(2)} to ${paidBy}`;
+    });
+
+  }
+
+  // =========================
+  // FINAL OUTPUT
+  // =========================
+
+  setOutput(result.join("\n"));

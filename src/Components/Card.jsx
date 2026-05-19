@@ -1,20 +1,54 @@
 import "./Card.css";
 
-export default function Card({showInput,showIcon, icon ,title, description , placeholder, type , value , onChange}) {
+export default function Card({
+  showInput,
+  showIcon,
+  showOutput,
+  output,
+  icon,
+  title,
+  description,
+  placeholder,
+  type,
+  value,
+  onChange
+}) {
 
-  //or use props and  props.title and props.description
   return (
     <div className="card">
-      <h2>{title}</h2>
-      <p>{description}</p>
-      {showIcon &&(
-        <span className={'card-icon ${icon}'}></span>
+
+      {title && <h2>{title}</h2>}
+      {description && <p>{description}</p>}
+
+      {/* INPUT CARD */}
+      {showInput && (
+        <div className="input-card">
+
+          {showIcon && (
+            <span className={`card-icon ${icon}`}></span>
+          )}
+
+          <input
+            type={type}
+            placeholder={placeholder}
+            value={value}
+            onChange={onChange}
+          />
+
+        </div>
       )}
-      {showInput &&(
-      <input type= {type}
-       placeholder={placeholder} 
-         value={value}
-  onChange={onChange}/>
+
+      {/* OUTPUT CARD */}
+      {showOutput && (
+        <div className="output-box">
+
+          {showIcon && (
+            <span className={`card-icon ${icon}`}></span>
+          )}
+
+          <pre>{output}</pre>
+
+        </div>
       )}
 
     </div>

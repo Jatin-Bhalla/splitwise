@@ -7,7 +7,7 @@ export default function List( {events, setEvents}) {
 
       // ADD useEffect HERE
     useEffect(() => {
-        console.log("Updated Events Array:", events);
+       // console.log("Updated Events Array:", events);
     }, [events]);
 
 

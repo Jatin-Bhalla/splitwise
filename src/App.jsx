@@ -27,6 +27,7 @@ function Page({ children }) {
 
 export default function App() {
   const [events, setEvents] = useState([]);
+  const [log ,setLog]= useState([]);
 
   const router = createBrowserRouter([
     {
@@ -57,7 +58,7 @@ export default function App() {
       path: "/activity",
       element: (
         <Page>
-          <Activity />
+          <Activity  logs ={log} setLog={setLog} />
         </Page>
       )
     },

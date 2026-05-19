@@ -1,4 +1,5 @@
-export default function Activity(){
+export default function Activity(log, setLog){
+        
         return(<></>)
 
 }
