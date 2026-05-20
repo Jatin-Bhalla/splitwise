@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Groups.css";
 
-export default function Groups({ logs = [], events = [] }) {
+export default function Groups({ logs = [] }) {
   const [box, setBox] = useState(null);
 
   function toggle(i) {
@@ -18,20 +18,21 @@ export default function Groups({ logs = [], events = [] }) {
       {logs.map((item, i) => (
         <div key={i} className="activity-card">
 
-          {/* HEADER */}
-          <div className="activity-header" onClick={() => toggle(i)}>
+          <div
+            className="activity-header"
+            onClick={() => toggle(i)}
+          >
             <h3>{item.description}</h3>
 
             <div className="people-row">
-              {events.map((person, idx) => (
+              {(item.participants || []).map((person, idx) => (
                 <div key={idx} className="circle">
-                  {person[0].toUpperCase()}
+                  {person?.charAt(0).toUpperCase()}
                 </div>
               ))}
             </div>
           </div>
 
-          {/* ONLY SIMPLE INFO (NO OWES TEXT) */}
           {box === i && (
             <div className="activity-body">
               <p>Paid ₹{item.amount} by {item.paidBy}</p>

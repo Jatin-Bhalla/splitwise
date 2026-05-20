@@ -145,6 +145,7 @@ export default function Home({ events, logs = [], setLogs }) {
       splitType,
       paidBy,
       result,
+      participants: [...events],
     };
 
     setLogs([...logs, logData]);
