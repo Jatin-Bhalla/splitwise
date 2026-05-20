@@ -14,3 +14,9 @@ in HOME.jsx SHOULD I add  a better input html for the code that  I made for perc
 
 Activity.jsx 
 Add a delete button in the  activity page to log the data
+
+Add account id and account info
+
+fix the footer
+.......
+saving data on the browser ??  how do i use it ?...why to maintain the session

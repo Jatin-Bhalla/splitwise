@@ -16,11 +16,39 @@ export default function Home({ events, logs = [], setLogs }) {
   const [shares, setShares] = useState({});
   const [exact, setExact] = useState({});
 
-  const splitMethods = ["Equally", "Percentage", "ByShares", "ExactAmount"];
+  const splitMethods = [
+    "Equally",
+    "Percentage",
+    "ByShares",
+    "ExactAmount",
+  ];
 
   const Total = Number(amount);
   const people = [...events];
 
+  // ---------- INPUT HANDLERS ----------
+  function handlePercentageChange(person, value) {
+    setPercentages((prev) => ({
+      ...prev,
+      [person]: Number(value),
+    }));
+  }
+
+  function handleShareChange(person, value) {
+    setShares((prev) => ({
+      ...prev,
+      [person]: Number(value),
+    }));
+  }
+
+  function handleExactChange(person, value) {
+    setExact((prev) => ({
+      ...prev,
+      [person]: Number(value),
+    }));
+  }
+
+  // ---------- CALCULATE ----------
   function calculate() {
     if (!description.trim()) {
       alert("Enter description");
@@ -57,18 +85,19 @@ export default function Home({ events, logs = [], setLogs }) {
         if (person === paidBy) {
           return `${person} paid ₹${Total}`;
         }
-        return `${person} owes ₹${splitAmount.toFixed(2)} to ${paidBy}`;
-      });
 
-      setOutput(result.join("\n"));
+        return `${person} owes ₹${splitAmount.toFixed(
+          2
+        )} to ${paidBy}`;
+      });
     }
 
     // ---------------- PERCENTAGE ----------------
-    if (splitType === "Percentage") {
+    else if (splitType === "Percentage") {
       let totalPercentage = 0;
 
       events.forEach((person) => {
-        totalPercentage += percentages[person] || 0;
+        totalPercentage += Number(percentages[person] || 0);
       });
 
       if (totalPercentage !== 100) {
@@ -77,23 +106,23 @@ export default function Home({ events, logs = [], setLogs }) {
       }
 
       result = events.map((person) => {
-        const share = (Total * (percentages[person] || 0)) / 100;
+        const share =
+          (Total * Number(percentages[person] || 0)) / 100;
 
         if (person === paidBy) {
           return `${person} paid ₹${Total}`;
         }
+
         return `${person} owes ₹${share.toFixed(2)} to ${paidBy}`;
       });
-
-      setOutput(result.join("\n"));
     }
 
     // ---------------- BY SHARES ----------------
-    if (splitType === "ByShares") {
+    else if (splitType === "ByShares") {
       let totalShares = 0;
 
       events.forEach((person) => {
-        totalShares += shares[person] || 0;
+        totalShares += Number(shares[person] || 0);
       });
 
       if (totalShares <= 0) {
@@ -102,23 +131,25 @@ export default function Home({ events, logs = [], setLogs }) {
       }
 
       result = events.map((person) => {
-        const personShare = (Total * (shares[person] || 0)) / totalShares;
+        const personShare =
+          (Total * Number(shares[person] || 0)) / totalShares;
 
         if (person === paidBy) {
           return `${person} paid ₹${Total}`;
         }
-        return `${person} owes ₹${personShare.toFixed(2)} to ${paidBy}`;
-      });
 
-      setOutput(result.join("\n"));
+        return `${person} owes ₹${personShare.toFixed(
+          2
+        )} to ${paidBy}`;
+      });
     }
 
     // ---------------- EXACT AMOUNT ----------------
-    if (splitType === "ExactAmount") {
+    else if (splitType === "ExactAmount") {
       let totalExact = 0;
 
       events.forEach((person) => {
-        totalExact += exact[person] || 0;
+        totalExact += Number(exact[person] || 0);
       });
 
       if (Math.abs(totalExact - Total) > 0.01) {
@@ -127,18 +158,19 @@ export default function Home({ events, logs = [], setLogs }) {
       }
 
       result = events.map((person) => {
-        const value = exact[person] || 0;
+        const value = Number(exact[person] || 0);
 
         if (person === paidBy) {
           return `${person} paid ₹${Total}`;
         }
+
         return `${person} owes ₹${value.toFixed(2)} to ${paidBy}`;
       });
-
-      setOutput(result.join("\n"));
     }
 
-    // ---------------- LOGS FIXED ----------------
+    setOutput(result.join("\n"));
+
+    // ---------------- SAVE LOG ----------------
     const logData = {
       description,
       amount: Total,
@@ -153,6 +185,7 @@ export default function Home({ events, logs = [], setLogs }) {
 
   return (
     <div className="home-container">
+      {/* DESCRIPTION */}
       <Card
         id="one"
         showInput={true}
@@ -164,6 +197,7 @@ export default function Home({ events, logs = [], setLogs }) {
         onChange={(e) => setDescription(e.target.value)}
       />
 
+      {/* AMOUNT */}
       <Card
         id="two"
         icon="rupee-icon"
@@ -176,8 +210,10 @@ export default function Home({ events, logs = [], setLogs }) {
         onChange={(e) => setAmount(e.target.value)}
       />
 
+      {/* PAID BY */}
       <div className="row">
         <p>Paid by</p>
+
         <ListBox
           label="people"
           items={events}
@@ -186,8 +222,10 @@ export default function Home({ events, logs = [], setLogs }) {
         />
       </div>
 
+      {/* SPLIT TYPE */}
       <div className="row">
         <p>and split</p>
+
         <ListBox
           label="Choose Method"
           items={splitMethods}
@@ -196,9 +234,84 @@ export default function Home({ events, logs = [], setLogs }) {
         />
       </div>
 
+      {/* -------- DYNAMIC RENDERING LIST -------- */}
+
+      {/* PERCENTAGE INPUTS */}
+      {splitType === "Percentage" && (
+        <div className="split-list">
+          <h3>Enter Percentage</h3>
+
+          {events.map((person) => (
+            <div className="split-item" key={person}>
+              <label>{person}</label>
+
+              <input
+                type="number"
+                placeholder="0%"
+                value={percentages[person] || ""}
+                onChange={(e) =>
+                  handlePercentageChange(person, e.target.value)
+                }
+              />
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* SHARES INPUTS */}
+      {splitType === "ByShares" && (
+        <div className="split-list">
+          <h3>Enter Shares</h3>
+
+          {events.map((person) => (
+            <div className="split-item" key={person}>
+              <label>{person}</label>
+
+              <input
+                type="number"
+                placeholder="Shares"
+                value={shares[person] || ""}
+                onChange={(e) =>
+                  handleShareChange(person, e.target.value)
+                }
+              />
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* EXACT AMOUNT INPUTS */}
+      {splitType === "ExactAmount" && (
+        <div className="split-list">
+          <h3>Enter Exact Amount</h3>
+
+          {events.map((person) => (
+            <div className="split-item" key={person}>
+              <label>{person}</label>
+
+              <input
+                type="number"
+                placeholder="₹0.00"
+                value={exact[person] || ""}
+                onChange={(e) =>
+                  handleExactChange(person, e.target.value)
+                }
+              />
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* BUTTON */}
       <Button label="Calculate" onClick={calculate} />
 
-      <Card id="three" showOutput={true} output={output} showIcon={false} />
+      {/* OUTPUT */}
+      <Card
+        id="three"
+        showOutput={true}
+        output={output}
+        showIcon={false}
+      />
     </div>
   );
 }

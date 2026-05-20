@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import Header from "./Components/Header";
 import Navbar from "./Components/Navbar";
-import Footer from "./Components/Footer";
+
 
 import Home from "./Pages/Home";
 import Groups from "./Pages/Groups";
@@ -21,7 +21,7 @@ function Page({ children }) {
         {children}
       </main>
 
-      <Footer />
+      
     </div>
   );
 }
